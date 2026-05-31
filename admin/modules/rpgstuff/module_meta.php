@@ -39,13 +39,15 @@ function rpgstuff_action_handler($action)
 
 	$actions = array(
 		'stylesheet_updates' => array('active' => 'stylesheet_updates', 'file' => 'stylesheet_updates.php'),
-		'plugin_updates' => array('active' => 'plugin_updates', 'file' => 'plugin_updates.php')
+		'plugin_updates' => array('active' => 'plugin_updates', 'file' => 'plugin_updates.php'),
+		'core_updates' => array('active' => 'core_updates', 'file' => 'core_updates.php')
     );
 	$actions = $plugins->run_hooks("admin_rpgstuff_action_handler", $actions);
 
 	$sub_menu = array();
 	$sub_menu['10'] = array("id" => "stylesheet_updates", "title" => $lang->stylesheet_updates, "link" => "index.php?module=rpgstuff-stylesheet_updates");
 	$sub_menu['20'] = array("id" => "plugin_updates", "title" => $lang->plugin_updates, "link" => "index.php?module=rpgstuff-plugin_updates");
+	$sub_menu['30'] = array("id" => "core_updates", "title" => $lang->core_updates, "link" => "index.php?module=rpgstuff-core_updates");
 
 	$sub_menu = $plugins->run_hooks("admin_rpgstuff_menu_updates", $sub_menu);
 
@@ -79,7 +81,8 @@ function rpgstuff_admin_permissions()
 
 	$admin_permissions = array(
 		"stylesheet_updates" => $lang->can_updates_stylesheet,
-		"plugin_updates" => $lang->can_updates_plugin
+		"plugin_updates" => $lang->can_updates_plugin,
+		"core_updates" => $lang->can_updates_core
     );
 
 	$admin_permissions = $plugins->run_hooks("admin_rpgstuff_permissions", $admin_permissions);
